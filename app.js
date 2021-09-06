@@ -10,13 +10,8 @@ require("dotenv").config()
 //app 
 const app = express()
 
-
-
-
 // import routes 
 const UserRoutes = require("./routes/user")
-
-
 
 //db
 mongoose.connect(process.env.DATABASE, { 
@@ -25,13 +20,10 @@ mongoose.connect(process.env.DATABASE, {
 }).then(() => console.log("DB conected"))
 
 //middleware
-
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
 app.use(expressvalidator())
-
-
 
 // routes middleware
 app.use('/api',UserRoutes)
