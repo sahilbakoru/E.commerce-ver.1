@@ -16,9 +16,11 @@
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-validator": "5.3.1",
     "mongoose": "^6.0.4",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.12",
+    "req-check": "^1.0.0",
     "uuid": "^8.3.2",
     "uuidv1": "^1.6.14"
   }

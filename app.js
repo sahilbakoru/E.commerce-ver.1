@@ -1,10 +1,14 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const morgan = require("morgan")
-const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const expressvalidator = require("express-validator")
+
 require("dotenv").config()
 
+
+//app 
+const app = express()
 
 
 
@@ -12,8 +16,7 @@ require("dotenv").config()
 // import routes 
 const UserRoutes = require("./routes/user")
 
-//app 
-const app = express()
+
 
 //db
 mongoose.connect(process.env.DATABASE, { 
@@ -26,6 +29,8 @@ mongoose.connect(process.env.DATABASE, {
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
+app.use(expressvalidator())
+
 
 
 // routes middleware
