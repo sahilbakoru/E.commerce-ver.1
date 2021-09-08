@@ -11,7 +11,7 @@ require("dotenv").config()
 const app = express()
 
 // import routes 
-const UserRoutes = require("./routes/user")
+const authRoutes = require("./routes/auth")
 
 //db
 mongoose.connect(process.env.DATABASE, { 
@@ -26,7 +26,7 @@ app.use(cookieParser())
 app.use(expressvalidator())
 
 // routes middleware
-app.use('/api',UserRoutes)
+app.use('/api',authRoutes)
 
 const port = process.env.PORT || 8000
 
