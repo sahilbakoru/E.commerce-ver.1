@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
         require:true,
         maxlenth:32
     },
-    discription:{
+    description:{
         type:String,
         require:true,
     },
@@ -23,6 +23,11 @@ const productSchema = new mongoose.Schema({
         ref:'Category',
         required:true,
     },
+    subcategory:{
+        type:ObjectId,
+        ref:'subCategory',
+        required:true,
+    },
     quantity:{
         type:Number,
         
@@ -32,8 +37,8 @@ const productSchema = new mongoose.Schema({
         contentType:String
     },
     shipping:{
-        required:true,
-        type:Boolean
+        type:Boolean,
+        required:false
 
     }
     
