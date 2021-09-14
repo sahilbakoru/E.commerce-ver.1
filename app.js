@@ -14,7 +14,7 @@ const app = express()
 const authRoutes = require("./routes/auth")
 const userRoutes = require("./routes/user")
 const categoryRoutes = require("./routes/category")
-
+const subcategoryRoutes = require("./routes/subcategory")
 //db
 mongoose.connect(process.env.DATABASE, { 
     useNewUrlParser: true,
@@ -31,6 +31,7 @@ app.use(expressvalidator())
 app.use('/api',authRoutes)
 app.use('/api',userRoutes)
 app.use('/api',categoryRoutes)
+app.use('/api',subcategoryRoutes)
 
 const port = process.env.PORT || 8000
 
