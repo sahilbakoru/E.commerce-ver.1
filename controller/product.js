@@ -18,10 +18,38 @@ exports.create= (req,res)=>{
             })
         }
 
-        const product = new Product(fields)
+        //check for all fields 
+        const{name,
+             description,
+             price,
+             category,
+             subcategory,
+             quantity,
+             shipping}= fields
 
+             if(!name||
+                !description||
+                !price||
+                !category||
+                !subcategory||
+                !quantity||
+                !shipping){
+                return res.status(400).json({
+                    error:"all fields are required"
+                })
+            }
+
+        const product = new Product(fields)
+  // 1kb= 1000
+  //1MB= 1000000
         if(files.photo){
 
+           //console.log("FILES PHOTO:",files.photo)
+           if(files.photo.size>1000000){
+               return res.status(400).json({
+                   error: "File must be less then 1 mb in size."
+               })
+           }
             product.photo.data = fs.readFileSync(files.photo.path)
             product.photo.contentType=files.photo.type
         }
