@@ -96,7 +96,7 @@ exports.remove = (req,res)=> {
     })
 }
 
-
+// Product update.
 exports.update = (req,res)=>{ 
     const form = new formidable.IncomingForm()
     form.keepExtensions = true
