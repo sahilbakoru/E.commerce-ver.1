@@ -15,7 +15,7 @@ exports.subcategoryById = (req,res,next,Id)=>{
 }
 
 
-
+//subcategory create.
 exports.create=(req,res)=>{
     const subcategory = new subCategory(req.body)
     subcategory.save((err,data)=>{
