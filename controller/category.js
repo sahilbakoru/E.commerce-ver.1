@@ -43,7 +43,7 @@ exports.update = (req,res)=>{
 
 }
 
-exports.remove = (req,res)=>{
+exports.remove1 = (req,res)=>{
     const category = req.category
     
     category.remove((err,data)=>{ 
