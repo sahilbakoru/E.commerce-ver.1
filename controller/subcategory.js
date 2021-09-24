@@ -31,3 +31,48 @@ exports.create=(req,res)=>{
 exports.read=(req,res)=>{ 
     return res.json(req.subcategory)
 }
+
+
+// update delete getall ..from here. 
+
+exports.update = (req,res)=>{
+    const subcategory = req.subcategory
+    subcategory.name= req.body.name
+    subcategory.save((err,data)=>{ 
+        if(err){
+            return res.status(400).json({
+                error:errorHandler(err)
+            })
+        }
+        res.json(data)
+    })
+
+}
+
+exports.remove2 = (req,res)=>{
+    const subcategory = req.subcategory
+    
+    subcategory.remove((err,data)=>{ 
+        if(err){
+            return res.status(400).json({
+                error:errorHandler(err)
+            })
+        }
+        res.json({
+            message:'subcategory deleted'
+        })
+    })
+
+}
+
+exports.list = (req,res)=>{
+    subCategory.find().exec((err,data)=>{
+        if(err){
+            return res.status(400).json({
+                error:errorHandler(err)
+            })
+        }
+        res.json(data);
+    })
+   
+}
