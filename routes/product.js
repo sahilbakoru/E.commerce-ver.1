@@ -13,7 +13,7 @@ router.delete("/product/:productId/:userId",requireSignin, isAuth,isAdmin,remove
 router.put("/product/:productId/:userId",requireSignin, isAuth,isAdmin,update)
 
 
-router.get("/product",list)
+router.get("/products",list)
 router.param('userId',userById)
 router.param('productId',productById)
 module.exports = router
