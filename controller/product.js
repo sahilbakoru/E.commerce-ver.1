@@ -220,9 +220,6 @@ exports.listRelated=(req,res)=>{
 }
 
 
-
-
-
 exports.listCategories=(req,res)=>{ 
     Product.distinct("category",{},(err,categories)=>{ 
         if(err){
@@ -247,15 +244,15 @@ exports.listCategories=(req,res)=>{
 // route - make sure its post
 //router.post("/products/by/search", listBySearch);
 
-exports.listBySearch = (req, res) => {
+exports.listBySearch = (req, res) => { 
     let order = req.body.order ? req.body.order : 'desc';
     let sortBy = req.body.sortBy ? req.body.sortBy : '_id';
     let limit = req.body.limit ? parseInt(req.body.limit) : 100;
     let skip = parseInt(req.body.skip);
     let findArgs = {};
 
-    // console.log(order, sortBy, limit, skip, req.body.filters);
-    // console.log("findArgs", findArgs);
+     console.log(order, sortBy, limit, skip, req.body.filters);
+     console.log("findArgs", findArgs);
 
     for (let key in req.body.filters) {
         if (req.body.filters[key].length > 0) {
@@ -263,8 +260,8 @@ exports.listBySearch = (req, res) => {
                 // gte -  greater than price [0-10]
                 // lte - less than
                 findArgs[key] = {
-                    $gte: req.body.filters[key][0],
-                    $lte: req.body.filters[key][1]
+                    $gte:[ req.body.filters[key][0]],
+                    $lte:[ req.body.filters[key][1]]
                 };
             } else {
                 findArgs[key] = req.body.filters[key];
