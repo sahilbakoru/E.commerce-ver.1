@@ -1,6 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const morgan = require("morgan")
+//const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
 const expressvalidator = require("express-validator")
 
@@ -23,7 +23,7 @@ mongoose.connect(process.env.DATABASE, {
 }).then(() => console.log("DB conected"))
 
 //middleware
-app.use(morgan('dev'))
+//app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
 app.use(expressvalidator())
