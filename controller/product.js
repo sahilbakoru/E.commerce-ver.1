@@ -245,13 +245,16 @@ exports.listCategories=(req,res)=>{
 //router.post("/products/by/search", listBySearch);
 
 exports.listBySearch = (req, res) => {
-    let order = req.body.order ? req.body.order : 'desc';
-    let sortBy = req.body.sortBy ? req.body.sortBy : '_id';
+    
+    let order = req.body.order ? req.body.order : "desc";
+    let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
     let limit = req.body.limit ? parseInt(req.body.limit) : 100;
     let skip = parseInt(req.body.skip);
     let findArgs = {};
     console.log(req.body)
+
      console.log(order, sortBy, limit, skip, req.body.filters);
+
      console.log("findArgs", findArgs);
 
     for (let key in req.body.filters) {
@@ -263,11 +266,14 @@ exports.listBySearch = (req, res) => {
                     $gte: req.body.filters[key][0],
                     $lte: req.body.filters[key][1]
                 };
+                
             } else {
                 findArgs[key] = req.body.filters[key];
             }
         }
     }
+
+    console.log(findArgs);
 
     Product.find(findArgs)
         .select("-photo")
@@ -279,6 +285,7 @@ exports.listBySearch = (req, res) => {
             if (err) {
                 return res.status(400).json({
                     error: "Products not found"
+                    
                 });
             }
             res.json({
@@ -287,3 +294,11 @@ exports.listBySearch = (req, res) => {
             });
         });
 };
+
+exports.photo=(req,res,next)=>{ 
+    if(req.product.photo.data){
+        res.set("Content-Type",req.product.photo.contentType)
+        return res.send(req.product.photo.data)
+    }
+    next()
+}
