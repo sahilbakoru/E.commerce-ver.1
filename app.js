@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 //const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
+const cors = require("cors")
 const expressvalidator = require("express-validator")
 
 require("dotenv").config()
@@ -27,7 +28,7 @@ mongoose.connect(process.env.DATABASE, {
 app.use(express.json())
 app.use(cookieParser())
 app.use(expressvalidator())
-
+app.use(cors())
 // routes middleware
 app.use('/api',authRoutes)
 app.use('/api',userRoutes)
