@@ -162,10 +162,6 @@ exports.update = (req,res)=>{
 }
 
 
-
-
-
-
 /**
  * sell/arrival
  * by sell = /products?soldBy=sold&order=desc&limit=4
@@ -275,8 +271,6 @@ exports.listBySearch = (req, res) => {
       }
  
         
-    
-
     Product.find(findArgs)
         .select("-photo")
         .populate("category")
