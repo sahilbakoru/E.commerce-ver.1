@@ -33,20 +33,23 @@ exports.create= (req,res)=>{
         }
 
         //check for all fields 
-        const{name,
+        const{
+            name,
              description,
              price,
              category,
-             subcategory,
+             //subcategory,
              quantity,
              shipping}= fields
 
-             if(!name||
+             if(
+                !name||
                 !description||
                 !price||
                 !category||
-                !subcategory||
+                //!subcategory||
                 !quantity||
+                
                 !shipping){
                 return res.status(400).json({
                     error:"all fields are required"
@@ -148,7 +151,7 @@ exports.update = (req,res)=>{
         }
         product.save((err,result)=>{
             if(err) {
-                console.log("Error3 ");
+                console.log("Error3.5 ");
                 return res.status(400).json({
                     error: errorHandler(err)
                 })
