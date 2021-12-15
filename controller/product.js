@@ -5,7 +5,9 @@ const{errorHandler}= require('../helpers/dbErrorHandler')
 const Product = require('../models/product')
 
 exports.productById=(req,res,next,Id)=>{
-    Product.findById(Id).exec((err,product)=>{
+    Product.findById(Id)
+    .populate("category")
+    .exec((err,product)=>{
         if(err||!product){
             return res.status(400).json({ 
                 error:'Product not found'
